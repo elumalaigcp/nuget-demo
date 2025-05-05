@@ -29,7 +29,7 @@ jobs:
     steps:
       - uses: jfrog/frogbot@v2
         env:
-          JF_URL: {{ secrets.JF_URL }}
+          JF_URL: 'https://hts2.jfrog.io'
           JF_USER: {{ secrets.JF_USER }}  # Using JF_USER instead of JF_GIT_TOKEN
           JF_ACCESS_TOKEN: {{ secrets.JF_ACCESS_TOKEN }}  # Using JF_ACCESS_TOKEN for authentication
           JF_GIT_BASE_BRANCH: {{ matrix.branch }}  # For repository scan action
