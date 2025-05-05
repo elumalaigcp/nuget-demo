@@ -1,0 +1,35 @@
+name: "Frogbot Security Scan"
+
+on:
+  pull_request_target:
+    types: [opened, synchronize]  # Triggers scan-pr flow for every opened/updated pull request
+  push:
+    branches: 
+      - master  # Updated branch to master
+  schedule:
+    - cron: "0 0 * * *"  # The repository will be scanned once a day at 00:00 GMT.
+  workflow_dispatch:  # The repository can be scanned on demand
+
+permissions:
+  pull-requests: write
+  contents: write
+  security-events: write
+  # [Mandatory If using OIDC authentication protocol instead of JF_ACCESS_TOKEN]
+  # id-token: write 
+
+jobs:
+  frogbot-scan:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        # The repository scanning will be triggered periodically on the following branch.
+        branch: ["master"]  # Updated branch to master
+
+    steps:
+      - uses: jfrog/frogbot@v2
+        env:
+          JF_URL: {{ secrets.JF_URL }}
+          JF_USER: {{ secrets.JF_USER }}  # Using JF_USER instead of JF_GIT_TOKEN
+          JF_ACCESS_TOKEN: {{ secrets.JF_ACCESS_TOKEN }}  # Using JF_ACCESS_TOKEN for authentication
+          JF_GIT_BASE_BRANCH: {{ matrix.branch }}  # For repository scan action
