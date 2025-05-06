@@ -26,6 +26,13 @@ jobs:
         branch: ["master"]  # Updated branch to master
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      
+      - name: List nuget-demo Directory Contents
+        run: ls -la 
+        
       - uses: jfrog/frogbot@v2
         env:
           JF_URL: 'https://hts2.jfrog.io'
