@@ -32,7 +32,7 @@ jobs:
       - name: List nuget-demo Directory Contents
         run: ls -la 
         
-      - uses: jfrog/frogbot@v2
+      - uses: jfrog/frogbot@v2.26.3
         env:
           JF_URL: 'https://hts2.jfrog.io'
           JF_USER: 'elumalai'
