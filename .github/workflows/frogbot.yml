@@ -6,7 +6,6 @@ on:
   push:
     branches: 
       - master  # Updated branch to master
-
 permissions:
   pull-requests: write
   contents: write
