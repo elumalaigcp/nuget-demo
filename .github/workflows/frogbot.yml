@@ -5,7 +5,8 @@ on:
     types: [opened, synchronize]  # Triggers scan-pr flow for every opened/updated pull request
   push:
     branches: 
-      - master  # Updated branch to master
+      - master
+      - main # Updated branch to master
 permissions:
   pull-requests: write
   contents: write
