@@ -35,7 +35,7 @@ jobs:
         
       - uses: jfrog/frogbot@v2.26.3
         env:
-          JF_USE_CONFIG_PROFILE: True
+          JF_USE_CONFIG_PROFILE: true
           JF_URL: 'https://hts2.jfrog.io'
           JF_USER: 'elumalai'
           JF_PASSWORD: 'Password@123'
